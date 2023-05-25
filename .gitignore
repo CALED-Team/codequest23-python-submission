@@ -13,3 +13,4 @@ __pycache__/
 .python-version
 
 .game_files
+*.zip
