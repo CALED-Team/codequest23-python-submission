@@ -16,6 +16,8 @@ def initialize_game():
 def play_game():
     message = comms.read_message()
     while message:
+        if message == "END":
+            break
         random_number = random.randint(1, 20)
         if random_number == 1:
             comms.post_message({
