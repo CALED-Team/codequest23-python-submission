@@ -4,7 +4,6 @@ This sample bot reads the message from game server every turn but ignores it and
 
 import comms
 import random
-import math
 
 
 def initialize_game():
@@ -25,7 +24,7 @@ def play_game():
             })
         else:
             comms.post_message({
-                "shoot": random.uniform(0, math.pi*2)
+                "shoot": random.uniform(0, random.randint(1, 360))
             })
 
         message = comms.read_message()
