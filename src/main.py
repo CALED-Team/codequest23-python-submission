@@ -1,35 +1,12 @@
 """
-This sample bot reads the message from game server every turn but ignores it and performs a random action.
+This is your starting point for a Python bot. It will read and store the game information every turn, then responds
+with an action. For now, this action is just shooting with a random angle. Write your own logic in game.py.
 """
 
-import comms
-import random
-
-
-def initialize_game():
-    message = comms.read_message()
-    while message != "END_INIT":
-        message = comms.read_message()
-
-
-def play_game():
-    message = comms.read_message()
-    while message:
-        if message == "END":
-            break
-        random_number = random.randint(1, 20)
-        if random_number == 1:
-            comms.post_message({
-                "path": [random.randint(100, 250), random.randint(100, 250)]
-            })
-        else:
-            comms.post_message({
-                "shoot": random.uniform(0, random.randint(1, 360))
-            })
-
-        message = comms.read_message()
+from game import Game
 
 
 if __name__ == "__main__":
-    initialize_game()
-    play_game()
+    game = Game()
+    while game.read_next_turn_data():
+        game.respond_to_turn()
