@@ -1,7 +1,7 @@
 import random
 
 import comms
-from types import ObjectTypes
+from object_types import ObjectTypes
 
 
 class Game:
@@ -31,6 +31,9 @@ class Game:
 
             # Store them in the objects dict
             self.objects.update(object_info)
+
+            # Read the next message
+            next_init_message = comms.read_message()
 
         # We are outside the loop, which means we must've received the END_INIT signal
 
