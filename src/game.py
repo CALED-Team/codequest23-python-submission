@@ -42,7 +42,7 @@ class Game:
         # Read all the objects and find the boundary objects
         boundaries = []
         for game_object in self.objects.values():
-            if game_object["type"] == ObjectTypes.BOUNDARY:
+            if game_object["type"] == ObjectTypes.BOUNDARY.value:
                 boundaries.append(game_object)
 
         # The biggest X and the biggest Y among all Xs and Ys of boundaries must be the top right corner of the map.
